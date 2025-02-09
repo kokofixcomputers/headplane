@@ -81,6 +81,7 @@ export default function Page() {
 				<thead className="text-headplane-600 dark:text-headplane-300">
 					<tr className="text-left px-0.5">
 						<th className="uppercase text-xs font-bold pb-2">Name</th>
+						<th className="uppercase text-xs font-bold pb-2">Owner</th>
 						<th className="pb-2 w-1/4">
 							<div className="flex items-center gap-x-1">
 								<p className="uppercase text-xs font-bold">Addresses</p>
