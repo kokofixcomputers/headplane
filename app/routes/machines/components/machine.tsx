@@ -112,6 +112,18 @@ export default function MachineRow({
 				</Link>
 			</td>
 			<td className="py-2">
+				<span
+					className={cn(
+						'flex items-center gap-x-1 text-sm',
+						'text-headplane-600 dark:text-headplane-300',
+					)}
+				>
+					<p>
+						{machine.user.name}
+					</p>
+				</span>
+			</td>
+			<td className="py-2">
 				<div className="flex items-center gap-x-1">
 					{machine.ipAddresses[0]}
 					<Menu placement="bottom end">
