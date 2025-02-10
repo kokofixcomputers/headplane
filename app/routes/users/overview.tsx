@@ -310,7 +310,7 @@ function UserCard({ user, magic }: CardProps) {
 						<span className="text-lg font-mono">{user.name}</span>
 					</div>
 					<div className="flex items-center gap-2">
-						<Rename username={user.name} />
+						<Rename username={user.id} />
 						{user.machines.length === 0 ? (
 							<Remove username={user.id} />
 						) : undefined}
