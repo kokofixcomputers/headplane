@@ -132,6 +132,7 @@ export default function Page() {
 					          magic={data.magic}
 					          stats={data.stats?.[machine.nodeKey]}
 					          onOwnerClick={handleOwnerClick}
+						  isSelected={selectedOwner === machine.user.id} //Pass isSelected prop
 					        />
 					))}
 				</tbody>
