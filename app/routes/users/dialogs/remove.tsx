@@ -3,10 +3,11 @@ import Code from '~/components/Code';
 import Dialog from '~/components/Dialog';
 
 interface Props {
+	id: string;
 	username: string;
 }
 
-export default function Remove({ username }: Props) {
+export default function Remove({ id, username }: Props) {
 	return (
 		<Dialog>
 			<Dialog.IconButton label={`Delete ${username}`}>
@@ -19,7 +20,7 @@ export default function Remove({ username }: Props) {
 					recovered.
 				</Dialog.Text>
 				<input type="hidden" name="_method" value="delete" />
-				<input type="hidden" name="username" value={username} />
+				<input type="hidden" name="username" value={id} />
 			</Dialog.Panel>
 		</Dialog>
 	);
