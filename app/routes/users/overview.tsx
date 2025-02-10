@@ -294,7 +294,7 @@ function UserCard({ user, magic }: CardProps) {
 	const { isOver, setNodeRef } = useDroppable({
 		id: user.name,
 	});
-	const isAnyMachineOnline = users.find((user) => user.name === userId)?.machines.some((machine) => machine.online) || false;
+	const isAnyMachineOnline = user.machines.some((machine) => machine.online);
 
 
 	return (
