@@ -18,6 +18,7 @@ interface Props {
 	magic?: string;
 	stats?: HostInfo;
 	onOwnerClick: (userId: string) => void; // Add this prop
+  	isSelected: boolean;
 }
 
 export default function MachineRow({
@@ -27,6 +28,7 @@ export default function MachineRow({
 	users,
 	stats,
 	onOwnerClick, // Destructure the prop
+  isSelected, //Destructure isSelected
 }: Props) {
 	const expired =
 		machine.expiry === '0001-01-01 00:00:00' ||
@@ -118,7 +120,8 @@ export default function MachineRow({
 					onClick={() => onOwnerClick(machine.user.id)} // Call the callback
 					className={cn(
 						'flex items-center gap-x-1 text-sm cursor-pointer', //Add cursor pointer
-						'text-headplane-600 dark:text-headplane-300 hover:underline', // Add hover effect
+						'hover:underline', // Add hover effect
+            isSelected ? 'font-bold text-blue-500' : 'text-headplane-600 dark:text-headplane-300', // Highlight when selected
 					)}
 					aria-label={`Show only machines from user ${machine.user.name}`} // Add aria-label for accessibility
 				>
