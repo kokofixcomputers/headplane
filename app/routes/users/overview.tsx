@@ -73,9 +73,7 @@ export async function action({ request }: ActionFunctionArgs) {
 			}
 
 			const username = String(data.get('username'));
-			await post('v1/user', session.get('hsApiKey')!, {
-				name: username,
-			});
+			await post(`v1/node/${id}/user`, session.get('hsApiKey')!, { user: to });
 
 			return { message: `User ${username} created` };
 		}
