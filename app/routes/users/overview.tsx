@@ -113,7 +113,6 @@ export async function action({ request }: ActionFunctionArgs) {
 			try {
 				await post(`v1/node/${id}/user`, session.get('hsApiKey')!, {
 				  body: JSON.stringify({ user: to }),
-				  headers: { 'Content-Type': 'application/json' }
 				});
 				return { message: `Moved ${name} to ${to}` };
 			} catch {
