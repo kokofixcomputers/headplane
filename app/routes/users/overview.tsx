@@ -208,30 +208,17 @@ function InteractiveUsers({ users, setUsers, magic }: UserProps) {
 				if (!reference.current) {
 					return;
 				}
-				
-				// Find the user that matches over.id
-			        const targetUser = users.find((user) => user.name === over.id);
-			
-			        if (!targetUser) {
-			            // The target user was not found, do nothing
-			            return;
-			        }
 
 				// Ignore if the user is unchanged
-				if (reference.current.user.id === over.id) {
+				if (reference.current.user.name === over.id) {
 					return;
 				}
 
 				for (const user of users) {
-					console.log(user.id)
-					console.log(user.name)
-					console.log(user)
-					console.log(over)
-					console.log(over.id)
 					newUsers.push({
 						...user,
 						machines:
-							over.id === user.id
+							over.id === user.name
 								? [...user.machines, reference.current]
 								: user.machines.filter((m) => m.id !== active.id),
 					});
@@ -241,7 +228,7 @@ function InteractiveUsers({ users, setUsers, magic }: UserProps) {
 				const data = new FormData();
 				data.append('_method', 'move');
 				data.append('id', active.id.toString());
-				data.append('to', String(targetUser.id));
+				data.append('to', String(over.id));
 				data.append('name', reference.current.givenName);
 
 				submit(data, {
