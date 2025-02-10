@@ -5,10 +5,11 @@ import Input from '~/components/Input';
 
 interface Props {
 	username: string;
+	id: string;
 }
 
 // TODO: Server side validation before submitting
-export default function Rename({ username }: Props) {
+export default function Rename({ id, username }: Props) {
 	const [newName, setNewName] = useState(username);
 
 	return (
@@ -24,7 +25,7 @@ export default function Rename({ username }: Props) {
 					username.
 				</Dialog.Text>
 				<input type="hidden" name="_method" value="rename" />
-				<input type="hidden" name="old" value={username} />
+				<input type="hidden" name="old" value={id} />
 				<Input
 					isRequired
 					name="new"
