@@ -111,7 +111,10 @@ export async function action({ request }: ActionFunctionArgs) {
 			const name = String(data.get('name'));
 
 			try {
-				await post(`v1/node/${id}/user?user=${to}`, session.get('hsApiKey')!);
+				await post(`v1/node/${id}/user`, session.get('hsApiKey')!, {
+				  body: JSON.stringify({ user: to }),
+				  headers: { 'Content-Type': 'application/json' }
+				});
 				return { message: `Moved ${name} to ${to}` };
 			} catch {
 				return send({ message: `Failed to move ${name} to ${to}` }, 500);
