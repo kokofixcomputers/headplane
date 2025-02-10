@@ -109,13 +109,25 @@ export async function action({ request }: ActionFunctionArgs) {
 			const name = String(data.get('name'));
 
 			try {
-				await post(`v1/node/${id}/user`, session.get('hsApiKey')!, {
-				  body: JSON.stringify({ user: to }),
-				});
-				return { message: `Moved ${name} to ${to}` };
-			} catch {
-				return send({ message: `Failed to move ${name} to ${to}` }, 500);
+			  await post(`v1/node/${id}/user`, session.get('hsApiKey')!, { user: to });
+			  return { message: `Moved ${name} to ${to}` };
+			} catch (error) {
+			  let errorMessage = 'An unexpected error occurred.';
+			  
+			  // Assuming post function throws an object with a status and possibly a text property
+			  if (typeof error === 'object' && 'status' in error) {
+			    errorMessage = `Failed with status ${error.status}:`;
+			    try {
+			      const responseText = await (error as any).text();
+			      errorMessage += `\n${responseText}`;
+			    } catch (e) {}
+			  } else if (typeof error === 'string') {
+			    errorMessage = `Failed: ${error}`;
+			  }
+			
+			  return send({ message: `Failed to move ${name} to ${to}`, details: errorMessage }, 500);
 			}
+
 		}
 
 		default: {
