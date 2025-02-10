@@ -215,6 +215,8 @@ function InteractiveUsers({ users, setUsers, magic }: UserProps) {
 					console.log(user.id)
 					console.log(user.name)
 					console.log(user)
+					console.log(over)
+					console.log(over.id)
 					newUsers.push({
 						...user,
 						machines:
