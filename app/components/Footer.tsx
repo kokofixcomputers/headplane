@@ -22,12 +22,12 @@ export default function Footer({ url, debug }: FooterProps) {
 			)}
 		>
 			<p className="container text-xs">
-				Headplane is entirely free to use. If you find it useful, consider{' '}
+				Headplane-fork is entirely free to use. Built on top of Headplane, consider{' '}
 				<Link
 					to="https://github.com/sponsors/tale"
 					name="Aarnav's GitHub Sponsors"
 				>
-					donating
+					donating to headplane
 				</Link>{' '}
 				to support development.{' '}
 			</p>
