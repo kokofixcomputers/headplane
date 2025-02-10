@@ -307,7 +307,7 @@ function UserCard({ user, magic }: CardProps) {
 				)}
 			>
 				<div className="flex items-center justify-between">
-					<div className="flex items-center gap-4">
+					<div className="flex items-center gap-1">
 						<PersonIcon className="w-6 h-6" />
 						<StatusCircle isOnline={isAnyMachineOnline} className="px-1 h-4 w-fit" />
 						<span className="text-lg font-mono">{user.name}</span>
