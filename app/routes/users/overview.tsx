@@ -207,7 +207,7 @@ function InteractiveUsers({ users, setUsers, magic }: UserProps) {
 				}
 
 				// Ignore if the user is unchanged
-				if (reference.current.user.name === over.id) {
+				if (reference.current.user.id === over.id) {
 					return;
 				}
 
