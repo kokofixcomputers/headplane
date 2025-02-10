@@ -205,6 +205,14 @@ function InteractiveUsers({ users, setUsers, magic }: UserProps) {
 				if (!reference.current) {
 					return;
 				}
+				
+				// Find the user that matches over.id
+			        const targetUser = users.find((user) => user.name === over.id);
+			
+			        if (!targetUser) {
+			            // The target user was not found, do nothing
+			            return;
+			        }
 
 				// Ignore if the user is unchanged
 				if (reference.current.user.id === over.id) {
@@ -230,7 +238,7 @@ function InteractiveUsers({ users, setUsers, magic }: UserProps) {
 				const data = new FormData();
 				data.append('_method', 'move');
 				data.append('id', active.id.toString());
-				data.append('to', over.id.toString());
+				data.append('to', String(targetUser.id));
 				data.append('name', reference.current.givenName);
 
 				submit(data, {
