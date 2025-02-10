@@ -215,7 +215,7 @@ function InteractiveUsers({ users, setUsers, magic }: UserProps) {
 					newUsers.push({
 						...user,
 						machines:
-							over.id === user.name
+							over.id === user.id
 								? [...user.machines, reference.current]
 								: user.machines.filter((m) => m.id !== active.id),
 					});
