@@ -17,6 +17,7 @@ interface Props {
 	users: User[];
 	magic?: string;
 	stats?: HostInfo;
+	onOwnerClick: (userId: string) => void; // Add this prop
 }
 
 export default function MachineRow({
@@ -25,6 +26,7 @@ export default function MachineRow({
 	magic,
 	users,
 	stats,
+	onOwnerClick, // Destructure the prop
 }: Props) {
 	const expired =
 		machine.expiry === '0001-01-01 00:00:00' ||
@@ -112,16 +114,18 @@ export default function MachineRow({
 				</Link>
 			</td>
 			<td className="py-2">
-				<span
+				<button // Change span to button
+					onClick={() => onOwnerClick(machine.user.id)} // Call the callback
 					className={cn(
-						'flex items-center gap-x-1 text-sm',
-						'text-headplane-600 dark:text-headplane-300',
+						'flex items-center gap-x-1 text-sm cursor-pointer', //Add cursor pointer
+						'text-headplane-600 dark:text-headplane-300 hover:underline', // Add hover effect
 					)}
+					aria-label={`Show only machines from user ${machine.user.name}`} // Add aria-label for accessibility
 				>
 					<p>
 						{machine.user.name}
 					</p>
-				</span>
+				</button>
 			</td>
 			<td className="py-2">
 				<div className="flex items-center gap-x-1">
