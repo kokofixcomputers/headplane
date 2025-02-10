@@ -57,6 +57,16 @@ export async function action({ request }: ActionFunctionArgs) {
 export default function Page() {
 	const data = useLoaderData<typeof loader>();
 
+	const [selectedOwner, setSelectedOwner] = useState(null);
+
+  	const handleOwnerClick = (userId) => { 
+    		setSelectedOwner((prevSelectedOwner) => (prevSelectedOwner === userId ? null : userId));
+  	};
+
+  	const filteredMachines = selectedOwner
+    		? data.nodes.filter((machine) => machine.user.id === selectedOwner)
+    		: data.nodes;
+
 	return (
 		<>
 			<div className="flex justify-between items-center mb-6">
@@ -110,17 +120,19 @@ export default function Page() {
 						'border-t border-headplane-100 dark:border-headplane-800',
 					)}
 				>
-					{data.nodes.map((machine) => (
-						<MachineRow
-							key={machine.id}
-							machine={machine}
-							routes={data.routes.filter(
-								(route) => route.node.id === machine.id,
-							)}
-							users={data.users}
-							magic={data.magic}
-							stats={data.stats?.[machine.nodeKey]}
-						/>
+					
+					{filteredMachines.map((machine) => (
+					        <MachineRow
+					          key={machine.id}
+					          machine={machine}
+					          routes={data.routes.filter(
+					            (route) => route.node.id === machine.id
+					          )}
+					          users={data.users}
+					          magic={data.magic}
+					          stats={data.stats?.[machine.nodeKey]}
+					          onOwnerClick={handleOwnerClick}
+					        />
 					))}
 				</tbody>
 			</table>
