@@ -15,10 +15,12 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
+        with:
+          fetch-depth: 0 # Ensure all history is fetched
 
       - name: Zip Folder
         run: |
-          zip -r release.zip . -i .env.example -x ".git/*" ".github/*"
+          zip -r release.zip . -x ".git/*" ".github/*"
 
       - name: Create Release
         uses: ncipollo/release-action@v1.12.0
