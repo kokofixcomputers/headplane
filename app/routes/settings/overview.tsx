@@ -55,6 +55,22 @@ export default function Page() {
 				</Card.Text>
 			</Card>
 
+			<Card variant="flat" className="max-w-prose mt-12">
+				<div className="flex items-center justify-between">
+					<Card.Title className="text-xl mb-0">PKCE Settings</Card.Title>
+				</div>
+				<Card.Text className="mt-4">
+					Configure PKCE (Proof Key for Code Exchange) Settings
+					
+					<RemixLink to="/settings/pkce">
+						<div className="text-lg font-medium flex items-center">
+							Manage PKCE Settings
+							<ArrowRightIcon className="w-5 h-5 ml-2" />
+						</div>
+					</RemixLink>
+				</Card.Text>
+			</Card>
+
 			{/**<AgentSection />**/}
 		</div>
 	);
