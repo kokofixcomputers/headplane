@@ -14,6 +14,7 @@ type Properties = {
 	readonly only_start_if_oidc_is_available: boolean;
 };
 
+
 // TODO: Switch to form submit instead of JSON patch
 export default function Modal({ issuer, client_id, client_secret, disabled, only_start_if_oidc_is_available }: Properties) {
 	const [newIssuer, setNewIssuer] = useState(issuer);
@@ -22,18 +23,32 @@ export default function Modal({ issuer, client_id, client_secret, disabled, only
 	const [newOnly_start_if_oidc_is_available, setOnly_start_if_oidc_is_available] = useState(only_start_if_oidc_is_available);
 	const fetcher = useFetcher();
 
+	const OIDCSwitch = () => {
+		const style = {
+		  fontSize: '16px',
+		  fontWeight: 'bold',
+		  color: 'blue'
+		};
+	  
+		return (
+		  <div style={style}>
+			Only Start HeadScale if OIDC Authentication is available
+			<Switch
+			  label="Only Start HeadScale if OIDC Authentication is available"
+			  defaultSelected={only_start_if_oidc_is_available}
+			  onChange={setOnly_start_if_oidc_is_available}
+			/>
+		  </div>
+		);
+	  };
+
 	return (
 		<div className="flex flex-col w-2/3 gap-y-4">
 			<h1 className="text-2xl font-medium mb-2">OIDC Settings</h1>
 			<p>
 				Configure OIDC Authentication Settings
 			</p>
-			<p>Only Start HeadScale if OIDC Authentication is available</p>
-			<Switch
-				isReadOnly
-				label="Only Start HeadScale if OIDC Authentication is available"
-				defaultSelected={only_start_if_oidc_is_available}
-			/>
+			<OIDCSwitch />
 			<Input
                 isReadOnly
 				className="w-3/5 font-medium text-sm"
