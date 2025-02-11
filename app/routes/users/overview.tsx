@@ -311,12 +311,14 @@ function UserCard({ user, magic }: CardProps) {
 					<div className="flex items-center gap-1">
 						<PersonIcon className="w-6 h-6" />
 						<StatusCircle isOnline={isAnyMachineOnline} className="px-1 h-4 w-fit" />
-						<span className="text-lg font-mono">{user.name}</span>
+						<span className="text-lg font-mono">
+						  {user.name !== "" ? user.name : user.displayName}
+						</span>
 					</div>
 					<div className="flex items-center gap-2">
 						<Rename id={user.id} username={user.name} />
 						{user.machines.length === 0 ? (
-							<Remove id={user.id} username={user.name} />
+							<Remove id={user.id} username={user.name !== "" ? user.name : user.displayName} />
 						) : undefined}
 					</div>
 				</div>
