@@ -1,4 +1,5 @@
 import { OrganizationIcon, PasskeyFillIcon } from '@primer/octicons-react';
+import { Link as RemixLink } from 'react-router';
 
 import Card from '~/components/Card';
 import Link from '~/components/Link';
@@ -33,12 +34,11 @@ export default function Oidc({ oidc, magic }: Props) {
 						</Link>
 					</p>
 					<div className="flex items-center gap-2 mt-4">
-						<Link
-							to="/settings/oidc"
-							name="Headscale OIDC Documentation"
-						>
-							Learn more
-						</Link>
+						<p className="mb-8 text-md">
+							<RemixLink to="/settings/oidc" className="font-medium">
+								Configure OIDC Settings
+							</RemixLink>
+						</p>
 					</div>
 				</div>
 				<div className="w-full p-4 md:border-l border-headplane-100 dark:border-headplane-800">
