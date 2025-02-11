@@ -323,7 +323,7 @@ function UserCard({ user, magic }: CardProps) {
 			>
 				<div className="flex items-center justify-between">
 					<div className="flex items-center gap-1">
-						{user.provider === "ocid" ? <FontAwesomeIcon icon={faSitemap} /> : <PersonIcon className="w-6 h-6" />}
+						{user.provider === "oidc" ? <FontAwesomeIcon icon={faSitemap} /> : <PersonIcon className="w-6 h-6" />}
 						<StatusCircle isOnline={isAnyMachineOnline} className="px-1 h-4 w-fit" />
 						<span className="text-lg font-mono inline-flex items-center gap-1">
 							{user.name !== "" ? user.name : user.displayName}
