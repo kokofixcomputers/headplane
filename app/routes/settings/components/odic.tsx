@@ -21,7 +21,7 @@ export default function Modal({ issuer, client_id, client_secret, disabled }: Pr
 
 	return (
 		<div className="flex flex-col w-2/3 gap-y-4">
-			<h1 className="text-2xl font-medium mb-2">Tailnet Name</h1>
+			<h1 className="text-2xl font-medium mb-2">ODIC Settings</h1>
 			<p>
 				Configure ODIC Authentication Settings
 			</p>
@@ -83,18 +83,18 @@ export default function Modal({ issuer, client_id, client_secret, disabled }: Pr
 					<Input
 						label="Issuer"
                         value={issuer}
-						placeholder="ts.net"
+						placeholder="Your Issuer"
 						onChange={setNewIssuer}
 					/>
                     <Input
 						label="Client ID"
                         value={client_id}
-						placeholder="ts.net"
+						placeholder="Your client ID"
 						onChange={setNewClient_id}
 					/>
                     <Input
 						label="Client Secret" // Value won't be added for privacy reasons
-						placeholder="ts.net"
+						placeholder="Your client secret"
 						onChange={setNewClient_secret}
 					/>
 				</Dialog.Panel>
