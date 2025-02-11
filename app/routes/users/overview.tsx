@@ -224,6 +224,11 @@ function InteractiveUsers({ users, setUsers, magic }: UserProps) {
 					return;
 				}
 
+				// Ignore if the user is OCID managed
+				if (reference.current.user.provider === 'ocid') {
+					return;
+				}
+
 				for (const user of users) {
 					newUsers.push({
 						...user,
@@ -317,7 +322,7 @@ function UserCard({ user, magic }: CardProps) {
 								<Tooltip>
 								<Info className="p-1" />
 								<Tooltip.Body>
-									This user is managed by your OIDC External Provider. You cannot rename this user.
+									This user is managed by your OIDC External Provider. You cannot rename this user nor move machines between this user.
 								</Tooltip.Body>
 								</Tooltip>
 							)}

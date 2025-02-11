@@ -59,7 +59,7 @@ export default function Modal({ issuer, client_id, client_secret, disabled }: Pr
 					{fetcher.state === 'idle' ? undefined : (
 						<Spinner className="w-3 h-3" />
 					)}
-					Save
+					Change ODIC Settings
 				</Dialog.Button>
 				<Dialog.Panel
 					onSubmit={() => {
