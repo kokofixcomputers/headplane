@@ -28,6 +28,7 @@ export default function Modal({ issuer, client_id, client_secret, disabled, only
 			<p>
 				Configure OIDC Authentication Settings
 			</p>
+			<p>Only Start HeadScale if OIDC Authentication is available</p>
 			<Switch
 				isReadOnly
 				label="Only Start HeadScale if OIDC Authentication is available"
@@ -89,6 +90,7 @@ export default function Modal({ issuer, client_id, client_secret, disabled, only
 					<Dialog.Text>
 						Keep in mind that changing this can break ODIC authentication if configured improperly.
 					</Dialog.Text>
+					<p>Only Start HeadScale if OIDC Authentication is available</p>
 					<Switch
 						label="Only Start HeadScale if OIDC Authentication is available"
 						defaultSelected={only_start_if_oidc_is_available}
