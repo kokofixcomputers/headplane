@@ -295,6 +295,7 @@ function UserCard({ user, magic }: CardProps) {
 		id: user.name,
 	});
 	const isAnyMachineOnline = user.machines.some((machine) => machine.online);
+	console.log(user)
 
 
 	return (
