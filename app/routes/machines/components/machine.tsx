@@ -126,7 +126,7 @@ export default function MachineRow({
 					aria-label={`Show only machines from user ${machine.user.name}`} // Add aria-label for accessibility
 				>
 					<p>
-						{machine.user.name}
+						{machine.user.name !== "" ? machine.user.name : machine.user.displayName}
 					</p>
 				</button>
 			</td>
