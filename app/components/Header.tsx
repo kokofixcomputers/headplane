@@ -80,11 +80,11 @@ export default function Header(data: Props) {
 			<div className="container flex items-center justify-between py-4">
 				<div className="flex items-center gap-x-2">
 					<PlaneTakeoff />
-					<h1 className="text-2xl font-semibold">headplane</h1>
+					<h1 className="text-2xl font-semibold">HeadPlane-fork</h1>
 				</div>
 				<div className="flex items-center gap-x-4">
 					<Link href="https://tailscale.com/download" text="Download" />
-					<Link href="https://github.com/tale/headplane" text="GitHub" />
+					<Link href="https://github.com/kokofixcomputers/headplane" text="GitHub" />
 					<Link href="https://github.com/juanfont/headscale" text="Headscale" />
 					{data.user ? (
 						<Menu>

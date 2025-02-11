@@ -5,6 +5,8 @@ import type { ActionFunctionArgs, LoaderFunctionArgs } from 'react-router';
 import { useActionData, useLoaderData, useSubmit } from 'react-router';
 import { ClientOnly } from 'remix-utils/client-only';
 import { Info } from 'lucide-react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faSitemap } from '@fortawesome/free-solid-svg-icons'
 import Tooltip from '~/components/Tooltip';
 import Attribute from '~/components/Attribute';
 import Card from '~/components/Card';
@@ -231,6 +233,11 @@ function InteractiveUsers({ users, setUsers, magic }: UserProps) {
 					return;
 				}
 
+				// Ignore if the machine is moved to a OCID user
+				if (over.provider === 'ocid') {
+					return;
+				}
+
 				for (const user of users) {
 					newUsers.push({
 						...user,
@@ -316,7 +323,7 @@ function UserCard({ user, magic }: CardProps) {
 			>
 				<div className="flex items-center justify-between">
 					<div className="flex items-center gap-1">
-						<PersonIcon className="w-6 h-6" />
+						{user.provider === "ocid" ? <FontAwesomeIcon icon={faSitemap} /> : <PersonIcon className="w-6 h-6" />}
 						<StatusCircle isOnline={isAnyMachineOnline} className="px-1 h-4 w-fit" />
 						<span className="text-lg font-mono inline-flex items-center gap-1">
 							{user.name !== "" ? user.name : user.displayName}
