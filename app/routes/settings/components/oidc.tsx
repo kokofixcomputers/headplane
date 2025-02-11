@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { useFetcher } from 'react-router';
+import Switch from '~/components/Switch';
 
 import Dialog from '~/components/Dialog';
 import Input from '~/components/Input';
@@ -10,21 +11,28 @@ type Properties = {
 	readonly disabled?: boolean;
     readonly client_id: string;
     readonly client_secret: string;
+	readonly only_start_if_oidc_is_available: boolean;
 };
 
 // TODO: Switch to form submit instead of JSON patch
-export default function Modal({ issuer, client_id, client_secret, disabled }: Properties) {
+export default function Modal({ issuer, client_id, client_secret, disabled, only_start_if_oidc_is_available }: Properties) {
 	const [newIssuer, setNewIssuer] = useState(issuer);
     const [newClient_id, setNewClient_id] = useState(client_id);
     const [newClient_secret, setNewClient_secret] = useState(client_secret);
+	const [newOnly_start_if_oidc_is_available, setOnly_start_if_oidc_is_available] = useState(only_start_if_oidc_is_available);
 	const fetcher = useFetcher();
 
 	return (
 		<div className="flex flex-col w-2/3 gap-y-4">
-			<h1 className="text-2xl font-medium mb-2">ODIC Settings</h1>
+			<h1 className="text-2xl font-medium mb-2">OIDC Settings</h1>
 			<p>
-				Configure ODIC Authentication Settings
+				Configure OIDC Authentication Settings
 			</p>
+			<Switch
+				isReadOnly
+				label="Only Start HeadScale if OIDC Authentication is available"
+				defaultSelected={only_start_if_oidc_is_available}
+			/>
 			<Input
                 isReadOnly
 				className="w-3/5 font-medium text-sm"
@@ -65,6 +73,7 @@ export default function Modal({ issuer, client_id, client_secret, disabled }: Pr
 					onSubmit={() => {
 						fetcher.submit(
 							{
+								'oidc.only_start_if_oidc_is_available': newOnly_start_if_oidc_is_available,
 								'oidc.issuer': newIssuer,
                                 'oidc.client_id': newClient_id,
                                 'oidc.client_secret': newClient_secret,
@@ -80,6 +89,11 @@ export default function Modal({ issuer, client_id, client_secret, disabled }: Pr
 					<Dialog.Text>
 						Keep in mind that changing this can break ODIC authentication if configured improperly.
 					</Dialog.Text>
+					<Switch
+						label="Only Start HeadScale if OIDC Authentication is available"
+						defaultSelected={only_start_if_oidc_is_available}
+						onChange={setOnly_start_if_oidc_is_available}
+					/>
 					<Input
 						label="Issuer"
                         value={issuer}

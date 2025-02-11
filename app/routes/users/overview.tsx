@@ -17,6 +17,8 @@ import { loadConfig } from '~/utils/config/headscale';
 import { del, post, pull } from '~/utils/headscale';
 import { send } from '~/utils/res';
 import { getSession } from '~/utils/sessions.server';
+import Chip from '~/components/Chip';
+
 
 import toast from '~/utils/toast';
 import Auth from './components/auth';
@@ -316,14 +318,18 @@ function UserCard({ user, magic }: CardProps) {
 					<div className="flex items-center gap-1">
 						<PersonIcon className="w-6 h-6" />
 						<StatusCircle isOnline={isAnyMachineOnline} className="px-1 h-4 w-fit" />
-						<span className="text-lg font-mono inline-flex items-center">
+						<span className="text-lg font-mono inline-flex items-center gap-1">
 							{user.name !== "" ? user.name : user.displayName}
 							{(user.provider === "oidc") && (
 								<Tooltip>
-								<Info className="p-1" />
-								<Tooltip.Body>
-									This user is managed by your OIDC External Provider. You cannot rename this user nor move machines between this user.
-								</Tooltip.Body>
+									<Chip
+										text="Managed"
+										leftIcon={<Info className="p-1" />}
+										className={cn('inline-flex items-center')}
+									/>
+									<Tooltip.Body>
+										This user is managed by your OIDC External Provider. You cannot rename this user nor move machines between this user.
+									</Tooltip.Body>
 								</Tooltip>
 							)}
 						</span>

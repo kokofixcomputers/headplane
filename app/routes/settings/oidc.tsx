@@ -17,6 +17,7 @@ export async function loader() {
 
 	const config = await loadConfig();
 	const odicdata = config.oidc ? {
+		only_start_if_oidc_is_available: config.oidc.only_start_if_oidc_is_available,
 		issuer: config.oidc.issuer,
 		client_id: config.oidc.client_id,
 		client_secret: config.oidc.client_secret,
@@ -66,7 +67,7 @@ export default function Page() {
                             the configuration
                         </Notice>
                     )}
-                    <OdicModal issuer={data.issuer ?? ''} client_id={data.client_id ?? ''} client_secret={data.client_secret ?? ''} disabled={!data.config.write}></OdicModal>
+                    <OdicModal issuer={data.issuer ?? ''} client_id={data.client_id ?? ''} client_secret={data.client_secret ?? ''} only_start_if_oidc_is_available={data.only_start_if_oidc_is_available ?? true} disabled={!data.config.write}></OdicModal>
                 </div>
 		</>
 	);
