@@ -5,6 +5,7 @@ import type { ActionFunctionArgs, LoaderFunctionArgs } from 'react-router';
 import { useActionData, useLoaderData, useSubmit } from 'react-router';
 import { ClientOnly } from 'remix-utils/client-only';
 
+import Tooltip from '~/components/Tooltip';
 import Attribute from '~/components/Attribute';
 import Card from '~/components/Card';
 import { ErrorPopup } from '~/components/Error';
@@ -312,10 +313,18 @@ function UserCard({ user, magic }: CardProps) {
 						<StatusCircle isOnline={isAnyMachineOnline} className="px-1 h-4 w-fit" />
 						<span className="text-lg font-mono">
 						  {user.name !== "" ? user.name : user.displayName}
+						  {(user.provider === "oidc") && (
+						    <Tooltip>
+						      <Info className="p-1" />
+						      <Tooltip.Body>
+						        This user is managed by your OIDC External Provider. You cannot rename this user.
+						      </Tooltip.Body>
+						    </Tooltip>
+						  )}
 						</span>
 					</div>
 					<div className="flex items-center gap-2">
-						<Rename id={user.id} username={user.name} />
+						{user.provider === "" && <Rename id={user.id} username={user.name} />}
 						{user.machines.length === 0 ? (
 							<Remove id={user.id} username={user.name !== "" ? user.name : user.displayName} />
 						) : undefined}
