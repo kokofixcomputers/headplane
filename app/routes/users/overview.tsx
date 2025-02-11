@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 import type { ActionFunctionArgs, LoaderFunctionArgs } from 'react-router';
 import { useActionData, useLoaderData, useSubmit } from 'react-router';
 import { ClientOnly } from 'remix-utils/client-only';
-
+import { Info } from 'lucide-react';
 import Tooltip from '~/components/Tooltip';
 import Attribute from '~/components/Attribute';
 import Card from '~/components/Card';
