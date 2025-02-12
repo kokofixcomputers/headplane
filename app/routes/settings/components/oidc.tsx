@@ -133,9 +133,9 @@ export default function Modal({ issuer, client_id, client_secret, disabled, only
 							/>
 						</Dialog.Panel>
 					</Dialog>
-					<OidcDomainModal allowed_domains={allowed_domains ?? []} disabled={disabled} />		
 				</Card.Text>
 			</Card>
+			<OidcDomainModal allowed_domains={allowed_domains ?? []} disabled={disabled} />
 		</div>	
 	);
 }
