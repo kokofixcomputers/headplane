@@ -80,6 +80,25 @@ export default function Modal({ issuer, client_id, client_secret, disabled, only
 					event.target.select();
 				}}
 			/>
+			<div className="mt-4">
+				<TableList className="mb-8">
+					{allowed_domains.length === 0 ? (
+						<TableList.Item>
+							<p className="opacity-50 mx-auto">No allowed domain. All will be allowed.</p>
+						</TableList.Item>
+					) : (
+						allowed_domains.map((allowed_domain, index) => (
+							<TableList.Item key={`${allowed_domain}`}>
+								<div className="flex gap-24 items-center">
+									<div className="flex gap-4 items-center">
+										<p className="font-mono text-sm">{allowed_domain}</p>
+									</div>
+								</div>
+							</TableList.Item>
+						))
+					)}
+				</TableList>
+			</div>
 
 			<Dialog>
 				<Dialog.Button isDisabled={disabled}>
@@ -135,7 +154,7 @@ export default function Modal({ issuer, client_id, client_secret, disabled, only
 					<TableList className="mb-8">
 						{allowed_domains.length === 0 ? (
 							<TableList.Item>
-								<p className="opacity-50 mx-auto">No DNS records found</p>
+								<p className="opacity-50 mx-auto">No allowed domain. All will be allowed.</p>
 							</TableList.Item>
 						) : (
 							allowed_domains.map((allowed_domain, index) => (
