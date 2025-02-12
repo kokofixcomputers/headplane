@@ -98,58 +98,58 @@ export async function loader({ request }: LoaderFunctionArgs) {
 		session.get('hsApiKey')!,
 	);
 
-	const preAuthKeys = await Promise.all(
-		users.users.map((user) => {
-			const qp = new URLSearchParams();
-			qp.set('user', user.name);
-
-			return pull<{ preAuthKeys: PreAuthKey[] }>(
-				`v1/preauthkey?${qp.toString()}`,
-				session.get('hsApiKey')!,
-			);
-		}),
-	);
+	//const preAuthKeys = await Promise.all(
+	//	users.users.map((user) => {
+	//		const qp = new URLSearchParams();
+	//		qp.set('user', user.name);
+	//
+	//		return pull<{ preAuthKeys: PreAuthKey[] }>(
+	//			`v1/preauthkey?${qp.toString()}`,
+	//			session.get('hsApiKey')!,
+	//		);
+	//	}),
+	//);
 
 	return {
-		keys: preAuthKeys.flatMap((keys) => keys.preAuthKeys),
+		//keys: preAuthKeys.flatMap((keys) => keys.preAuthKeys),
 		users: users.users,
 		server: context.headscalePublicUrl ?? context.headscaleUrl,
 	};
 }
 
 export default function Page() {
-	const { keys, users, server } = useLoaderData<typeof loader>();
+	const { users, server } = useLoaderData<typeof loader>();
 	const [user, setUser] = useState('__headplane_all');
 	const [status, setStatus] = useState('active');
 
-	const filteredKeys = keys.filter((key) => {
-		if (user !== '__headplane_all' && key.user !== user) {
-			return false;
-		}
-
-		if (status !== 'all') {
-			const now = new Date();
-			const expiry = new Date(key.expiration);
-
-			if (status === 'active') {
-				return !(expiry < now) && (!key.used || key.reusable);
-			}
-
-			if (status === 'expired') {
-				return key.used || expiry < now;
-			}
-
-			if (status === 'reusable') {
-				return key.reusable;
-			}
-
-			if (status === 'ephemeral') {
-				return key.ephemeral;
-			}
-		}
-
-		return true;
-	});
+	//const filteredKeys = keys.filter((key) => {
+	//	if (user !== '__headplane_all' && key.user !== user) {
+	//		return false;
+	//	}
+	//
+	//	if (status !== 'all') {
+	//		const now = new Date();
+	//		const expiry = new Date(key.expiration);
+	//
+	//		if (status === 'active') {
+	//			return !(expiry < now) && (!key.used || key.reusable);
+	//		}
+	//
+	//		if (status === 'expired') {
+	//			return key.used || expiry < now;
+	//		}
+	//
+	//		if (status === 'reusable') {
+	//			return key.reusable;
+	//		}
+	//
+	//		if (status === 'ephemeral') {
+	//			return key.ephemeral;
+	//		}
+	//	}
+	//
+	//	return true;
+	//});
 
 	// TODO: Fix the selects
 	return (
@@ -203,17 +203,9 @@ export default function Page() {
 				</Select>
 			</div>
 			<TableList className="mt-4">
-				{filteredKeys.length === 0 ? (
 					<TableList.Item>
-						<p className="opacity-50 text-sm mx-auto">No pre-auth keys</p>
+						<p className="opacity-50 text-sm mx-auto">Pre-Auth Keys will only be shown once.</p>
 					</TableList.Item>
-				) : (
-					filteredKeys.map((key) => (
-						<TableList.Item key={key.id}>
-							<AuthKeyRow authKey={key} server={server} />
-						</TableList.Item>
-					))
-				)}
 			</TableList>
 		</div>
 	);

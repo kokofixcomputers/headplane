@@ -28,6 +28,7 @@ export default function AddAllowedDomain({ records }: Props) {
 				onSubmit={(event) => {
 					event.preventDefault();
 					if (!domain) return;
+                    if (isDuplicate) return;
 
 					setDomain('');
 					submit(
