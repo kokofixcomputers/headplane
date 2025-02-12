@@ -67,12 +67,14 @@ export default function Modal({ enabled, method, disabled }: Properties) {
 					<Dialog.Text>
 						Keep in mind that this will require the OIDC server to support PKCE.
 					</Dialog.Text>
-					<p>Enabled:</p>
-					<Switch
-						label="Enabled"
-						defaultSelected={enabled}
-						onChange={setNewEnabled}
-					/>
+                    <div className="flex items-center justify-between">
+					    <p>Enabled:</p>
+                        <Switch
+                            label="Enabled"
+                            defaultSelected={enabled}
+                            onChange={setNewEnabled}
+                        />
+                    </div>
 					<Input
 						label="Method"
                         value={method}
