@@ -1,7 +1,9 @@
 import { useState } from 'react';
 import { useFetcher } from 'react-router';
 import Switch from '~/components/Switch';
-
+import Button from '~/components/Button';
+import TableList from '~/components/TableList';
+import cn from '~/utils/cn';
 import Dialog from '~/components/Dialog';
 import Input from '~/components/Input';
 import Spinner from '~/components/Spinner';
@@ -12,11 +14,12 @@ type Properties = {
     readonly client_id: string;
     readonly client_secret: string;
 	readonly only_start_if_oidc_is_available: boolean;
+	readonly allowed_domains: string[];
 };
 
 
 // TODO: Switch to form submit instead of JSON patch
-export default function Modal({ issuer, client_id, client_secret, disabled, only_start_if_oidc_is_available }: Properties) {
+export default function Modal({ issuer, client_id, client_secret, disabled, only_start_if_oidc_is_available, allowed_domains }: Properties) {
 	const [newIssuer, setNewIssuer] = useState(issuer);
     const [newClient_id, setNewClient_id] = useState(client_id);
     const [newClient_secret, setNewClient_secret] = useState(client_secret);
@@ -27,7 +30,6 @@ export default function Modal({ issuer, client_id, client_secret, disabled, only
 		const style = {
 		  fontSize: '16px',
 		  fontWeight: 'bold',
-		  color: 'blue'
 		};
 	  
 		return (
@@ -128,6 +130,47 @@ export default function Modal({ issuer, client_id, client_secret, disabled, only
 						placeholder="Your client secret"
 						onChange={setNewClient_secret}
 					/>
+					<div className="mt-4">
+					<TableList className="mb-8">
+						{allowed_domains.length === 0 ? (
+							<TableList.Item>
+								<p className="opacity-50 mx-auto">No DNS records found</p>
+							</TableList.Item>
+						) : (
+							allowed_domains.map((allowed_domain, index) => (
+								<TableList.Item key={`${allowed_domain}`}>
+									<div className="flex gap-24 items-center">
+										<div className="flex gap-4 items-center">
+											<p className="font-mono text-sm">{allowed_domain}</p>
+										</div>
+									</div>
+									<Button
+										className={cn(
+											'px-2 py-1 rounded-md',
+											'text-red-500 dark:text-red-400',
+										)}
+										isDisabled={disabled}
+										onPress={() => {
+											fetcher.submit(
+												{
+													'oidc.allowed_domains': allowed_domains.filter(
+														(_, i) => i !== index,
+													),
+												},
+												{
+													method: 'PATCH',
+													encType: 'application/json',
+												},
+											);
+										}}
+									>
+										Remove
+									</Button>
+								</TableList.Item>
+							))
+						)}
+					</TableList>
+				</div>
 				</Dialog.Panel>
 			</Dialog>
 		</div>
