@@ -45,9 +45,10 @@ export default function Modal({ issuer, client_id, client_secret, disabled, only
 
 	return (
 		<div className="flex flex-col w-2/3 gap-y-4">
+			<h1 className="text-2xl font-medium mb-2">OIDC Settings</h1>
 			<Card variant="flat" className="max-w-prose mt-12">
 				<div className="flex items-center justify-between">
-					<Card.Title className="text-xl mb-0">OIDC Settings</Card.Title>
+					<Card.Title className="text-xl mb-0">Main Settings</Card.Title>
 				</div>
 				<Card.Text className="mt-4">
 					Configure OIDC Authentication Settings
