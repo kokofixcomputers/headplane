@@ -7,6 +7,7 @@ import cn from '~/utils/cn';
 import Dialog from '~/components/Dialog';
 import Input from '~/components/Input';
 import Spinner from '~/components/Spinner';
+import AddAllowedDomain from '../dialogs/allowedDomains';
 
 type Properties = {
 	readonly issuer: string;
@@ -170,6 +171,7 @@ export default function Modal({ issuer, client_id, client_secret, disabled, only
 							))
 						)}
 					</TableList>
+					{disabled ? undefined : <AddAllowedDomain records={allowed_domains} />}
 				</div>
 				</Dialog.Panel>
 			</Dialog>
