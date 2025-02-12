@@ -53,6 +53,7 @@ export default function Modal({ issuer, client_id, client_secret, disabled, only
 				<Card.Text className="mt-4">
 					Configure OIDC Authentication Settings
 					<OIDCSwitch />
+					<div style={{ marginBottom: '10px' }}></div>
 					<Input
 						isReadOnly
 						className="w-3/5 font-medium text-sm"
@@ -62,6 +63,7 @@ export default function Modal({ issuer, client_id, client_secret, disabled, only
 							event.target.select();
 						}}
 					/>
+					<div style={{ marginBottom: '10px' }}></div>
 					<Input
 						isReadOnly
 						className="w-3/5 font-medium text-sm"
@@ -71,6 +73,7 @@ export default function Modal({ issuer, client_id, client_secret, disabled, only
 							event.target.select();
 						}}
 					/>
+					<div style={{ marginBottom: '10px' }}></div>
 					<Input
 						isReadOnly
 						className="w-3/5 font-medium text-sm"
@@ -81,6 +84,7 @@ export default function Modal({ issuer, client_id, client_secret, disabled, only
 							event.target.select();
 						}}
 					/>
+					<div style={{ marginBottom: '10px' }}></div>
 
 					<Dialog>
 						<Dialog.Button isDisabled={disabled}>
