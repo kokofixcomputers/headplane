@@ -32,7 +32,7 @@ export default function AddAllowedDomain({ records }: Props) {
 					setDomain('');
 					submit(
 						{
-							'ocid.allowed_domains': [
+							'oidc.allowed_domains': [
 								...records,
 								domain
 							],
