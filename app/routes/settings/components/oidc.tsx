@@ -1,13 +1,10 @@
 import { useState } from 'react';
 import { useFetcher } from 'react-router';
 import Switch from '~/components/Switch';
-import Button from '~/components/Button';
-import TableList from '~/components/TableList';
-import cn from '~/utils/cn';
 import Dialog from '~/components/Dialog';
 import Input from '~/components/Input';
 import Spinner from '~/components/Spinner';
-import AddAllowedDomain from '../dialogs/allowedDomains';
+import OidcDomainModal from '../components/oidcAllowedDomains';
 
 type Properties = {
 	readonly issuer: string;
@@ -80,25 +77,6 @@ export default function Modal({ issuer, client_id, client_secret, disabled, only
 					event.target.select();
 				}}
 			/>
-			<div className="mt-4">
-				<TableList className="mb-8">
-					{allowed_domains.length === 0 ? (
-						<TableList.Item>
-							<p className="opacity-50 mx-auto">No allowed domain. All will be allowed.</p>
-						</TableList.Item>
-					) : (
-						allowed_domains.map((allowed_domain, index) => (
-							<TableList.Item key={`${allowed_domain}`}>
-								<div className="flex gap-24 items-center">
-									<div className="flex gap-4 items-center">
-										<p className="font-mono text-sm">{allowed_domain}</p>
-									</div>
-								</div>
-							</TableList.Item>
-						))
-					)}
-				</TableList>
-			</div>
 
 			<Dialog>
 				<Dialog.Button isDisabled={disabled}>
@@ -150,50 +128,9 @@ export default function Modal({ issuer, client_id, client_secret, disabled, only
 						placeholder="Your client secret"
 						onChange={setNewClient_secret}
 					/>
-					<div className="mt-4">
-					<TableList className="mb-8">
-						{allowed_domains.length === 0 ? (
-							<TableList.Item>
-								<p className="opacity-50 mx-auto">No allowed domain. All will be allowed.</p>
-							</TableList.Item>
-						) : (
-							allowed_domains.map((allowed_domain, index) => (
-								<TableList.Item key={`${allowed_domain}`}>
-									<div className="flex gap-24 items-center">
-										<div className="flex gap-4 items-center">
-											<p className="font-mono text-sm">{allowed_domain}</p>
-										</div>
-									</div>
-									<Button
-										className={cn(
-											'px-2 py-1 rounded-md',
-											'text-red-500 dark:text-red-400',
-										)}
-										isDisabled={disabled}
-										onPress={() => {
-											fetcher.submit(
-												{
-													'oidc.allowed_domains': allowed_domains.filter(
-														(_, i) => i !== index,
-													),
-												},
-												{
-													method: 'PATCH',
-													encType: 'application/json',
-												},
-											);
-										}}
-									>
-										Remove
-									</Button>
-								</TableList.Item>
-							))
-						)}
-					</TableList>
-					{disabled ? undefined : <AddAllowedDomain records={allowed_domains} />}
-				</div>
 				</Dialog.Panel>
 			</Dialog>
-		</div>
+			<OidcDomainModal allowed_domains={allowed_domains ?? []} disabled={disabled} />		
+		</div>	
 	);
 }
