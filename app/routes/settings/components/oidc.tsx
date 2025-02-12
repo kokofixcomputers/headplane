@@ -32,7 +32,7 @@ export default function Modal({ issuer, client_id, client_secret, disabled, only
 		};
 	  
 		return (
-		  <div style={style}>
+		  <div style={style} className="flex items-center justify-between">
 			Only Start HeadScale if OIDC Authentication is available
 			<Switch
 			  label="Only Start HeadScale if OIDC Authentication is available"
@@ -113,29 +113,35 @@ export default function Modal({ issuer, client_id, client_secret, disabled, only
 							<Dialog.Text>
 								Keep in mind that changing this can break ODIC authentication if configured improperly.
 							</Dialog.Text>
-							<p>Only Start HeadScale if OIDC Authentication is available</p>
-							<Switch
-								label="Only Start HeadScale if OIDC Authentication is available"
-								defaultSelected={only_start_if_oidc_is_available}
-								onChange={setOnly_start_if_oidc_is_available}
-							/>
+							<div className="flex items-center justify-between">
+								<p>Only Start HeadScale if OIDC Authentication is available</p>
+								<Switch
+									label="Only Start HeadScale if OIDC Authentication is available"
+									defaultSelected={only_start_if_oidc_is_available}
+									onChange={setOnly_start_if_oidc_is_available}
+								/>
+							</div>
+							<div style={{ marginBottom: '10px' }}></div>
 							<Input
 								label="Issuer"
 								value={issuer}
 								placeholder="Your Issuer"
 								onChange={setNewIssuer}
 							/>
+							<div style={{ marginBottom: '10px' }}></div>
 							<Input
 								label="Client ID"
 								value={client_id}
 								placeholder="Your client ID"
 								onChange={setNewClient_id}
 							/>
+							<div style={{ marginBottom: '10px' }}></div>
 							<Input
 								label="Client Secret" // Value won't be added for privacy reasons
 								placeholder="Your client secret"
 								onChange={setNewClient_secret}
 							/>
+							<div style={{ marginBottom: '10px' }}></div>
 						</Dialog.Panel>
 					</Dialog>
 				</Card.Text>
