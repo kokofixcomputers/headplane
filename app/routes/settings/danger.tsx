@@ -17,9 +17,13 @@ export async function loader() {
 
 	const config = await loadConfig();
 	const configdata = config ? {
+        //DangerAddressSettings
 		server_url: config.server_url,
 		listen_addr: config.listen_addr,
 		metrics_listen_addr: config.metrics_listen_addr,
+        //DangerSubnetSettings
+        ipv4: config.prefixes.v4,
+        ipv6: config.prefixes.v6,
 	} : {};
 
 
@@ -66,7 +70,7 @@ export default function Page() {
                             the configuration
                         </Notice>
                     )}
-					<DangerModal server_url={data.server_url ?? ''} listen_address={data.listen_addr ?? ''} metrics_listen_address={data.metrics_listen_addr ?? ''} disabled={!data.config.write}></DangerModal>
+					<DangerModal ipv4={data.ipv4 ?? '100.64.0.0/10'} ipv6={data.ipv6 ?? 'fd7a:115c:a1e0::/48'} server_url={data.server_url ?? ''} listen_address={data.listen_addr ?? ''} metrics_listen_address={data.metrics_listen_addr ?? ''} disabled={!data.config.write}></DangerModal>
             </div>
 		</>
 	);
