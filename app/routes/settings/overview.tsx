@@ -71,7 +71,7 @@ export default function Page() {
 				</Card.Text>
 			</Card>
 
-			<Card variant="flat" className="max-w-prose mt-12" border="border-other-danger">
+			<Card variant="flat" className="max-w-prose mt-12" border="border-other-danger" darkModeBorder="dark:border-other-danger">
 				<div className="flex items-center justify-between">
 					<Card.Title className="text-xl mb-0">Danger Settings</Card.Title>
 				</div>
