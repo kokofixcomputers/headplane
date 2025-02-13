@@ -65,7 +65,7 @@ export default function Page() {
                             the configuration
                         </Notice>
                     )}
-                    <PKCEModal enabled={data.enabled ?? false} method={data.method ?? ''} disabled={!data.config.write}></PKCEModal>
+                    <PKCEModal enabled={data.enabled ?? false} method={data.method ?? 'S256'} disabled={!data.config.write}></PKCEModal>
                 </div>
 		</>
 	);

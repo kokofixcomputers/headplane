@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useFetcher } from 'react-router';
 import Switch from '~/components/Switch';
+import Select from '~/components/Select';
 
 import Dialog from '~/components/Dialog';
 import Input from '~/components/Input';
@@ -75,12 +76,16 @@ export default function Modal({ enabled, method, disabled }: Properties) {
                             onChange={setNewEnabled}
                         />
                     </div>
-					<Input
-						label="Method"
-                        value={method}
-						placeholder="Method"
-						onChange={setNewMethod}
-					/>
+                    <Select
+                        label="Encryption Method"
+                        placeholder="Select a encryption method"
+                        className="w-full"
+                        defaultSelectedKey={method}
+                        onSelectionChange={(value) => setNewMethod(value?.toString() ?? '')}
+                    >
+                        <Select.Item key="S256">S256 (recommended)</Select.Item>
+                        <Select.Item key="plain">Plain</Select.Item>
+                    </Select>
 				</Dialog.Panel>
 			</Dialog>
 		</div>
