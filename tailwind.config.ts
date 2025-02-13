@@ -54,6 +54,12 @@ export default {
 					900: '#1A1A1A',
 					950: '#0D0D0D',
 				},
+				other: {
+					'danger': colors.red[500],
+					'warning': colors.yellow[500],
+					'success': colors.green[500],
+					'info': colors.blue[500],
+				}
 			},
 			keyframes: {
 				loader: {

@@ -29,6 +29,7 @@ export default [
 				route('/auth-keys', 'routes/settings/auth-keys.tsx'),
 				route('/oidc', 'routes/settings/oidc.tsx'),
 				route('/pkce', 'routes/settings/pkce.tsx'),
+				route('/danger', 'routes/settings/danger.tsx'),
 				// route('/local-agent', 'routes/settings/local-agent.tsx'),
 			]),
 		]),

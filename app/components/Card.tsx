@@ -5,9 +5,10 @@ import cn from '~/utils/cn';
 
 interface Props extends React.HTMLProps<HTMLDivElement> {
 	variant?: 'raised' | 'flat';
+	border?: 'danger' | 'info' | 'success' | 'warning' | 'default';
 }
 
-function Card({ variant = 'raised', ...props }: Props) {
+function Card({ variant = 'raised', border = 'default', ...props }: Props) {
 	return (
 		<div
 			{...props}
@@ -16,7 +17,9 @@ function Card({ variant = 'raised', ...props }: Props) {
 				variant === 'flat'
 					? 'bg-transparent shadow-none'
 					: 'bg-headplane-50/50 dark:bg-headplane-950/50 shadow-sm',
-				'border border-headplane-100 dark:border-headplane-800',
+				border === 'default' 
+					? 'border border-headplane-100 dark:border-headplane-800'
+					: `border border-other-${border}`,
 				props.className,
 			)}
 		>

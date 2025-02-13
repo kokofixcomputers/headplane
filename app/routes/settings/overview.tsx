@@ -71,6 +71,24 @@ export default function Page() {
 				</Card.Text>
 			</Card>
 
+			<Card variant="flat" className="max-w-prose mt-12" border="danger">
+				<div className="flex items-center justify-between">
+					<Card.Title className="text-xl mb-0">Danger Settings</Card.Title>
+				</div>
+				<Card.Text className="mt-4">
+					Warning! Changing these settings may cause issues with your Tailnet.
+
+					ONLY ENTER IF YOU KNOW WHAT YOU ARE DOING!
+					
+					<RemixLink to="/settings/danger">
+						<div className="text-lg font-medium flex items-center text-red-500">
+							Manage Danger Settings
+							<ArrowRightIcon className="w-5 h-5 ml-2" />
+						</div>
+					</RemixLink>
+				</Card.Text>
+			</Card>
+
 			{/**<AgentSection />**/}
 		</div>
 	);
