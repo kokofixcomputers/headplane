@@ -24,7 +24,7 @@ export default function Modal({ server_url, listen_address, metrics_listen_addre
 		<div className="flex flex-col w-2/3 gap-y-4">
 			<h1 className="text-2xl font-medium mb-2">Danger Settings</h1>
             <p className="text-sm text-gray-500">These settings are dangerous and should be changed with caution.</p>
-			<Card variant="flat" className="max-w-prose mt-12" border="danger">
+			<Card variant="flat" className="max-w-prose mt-12" border="border-other-danger" darkModeBorder='dark:border-other-danger'>
 				<div className="flex items-center justify-between">
 					<Card.Title className="text-xl mb-0">Address Settings</Card.Title>
 				</div>
