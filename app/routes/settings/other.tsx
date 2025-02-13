@@ -19,6 +19,8 @@ export async function loader() {
 	const configdata = config ? {
         // OtherRandomizeClientPortModal
 		randomize: config.randomize_client_port,
+        // OtherDisableCheckUpdatesModal
+        disable_check_updates: config.disable_check_updates,
 	} : {};
 
 
@@ -65,7 +67,7 @@ export default function Page() {
                             the configuration
                         </Notice>
                     )}
-					<OtherModal randomize={data.randomize ?? false} disabled={!data.config.write}></OtherModal>
+					<OtherModal disable_check_updates={data.disable_check_updates ?? false} randomize={data.randomize ?? false} disabled={!data.config.write}></OtherModal>
             </div>
 		</>
 	);
