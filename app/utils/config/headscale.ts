@@ -136,6 +136,12 @@ const HeadscaleConfig = z.object({
 			strip_email_domain: goBool.default(false),
 			expiry: goDuration.default('180d'),
 			use_expiry_from_token: goBool.default(false),
+			pkce: z
+				.object({
+					enabled: goBool.default(false).optional(),
+					method: z.enum(['S256', 'plain']).default('S256').optional(),
+				})
+    
 		})
 		.optional(),
 

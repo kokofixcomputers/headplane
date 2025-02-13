@@ -16,7 +16,7 @@ export async function loader() {
 	}
 
 	const config = await loadConfig();
-	const pkcedata = config.oidc.pkce ? {
+	const pkcedata = config.oidc ? {
 		enabled: config.oidc.pkce.enabled,
 		method: config.oidc.pkce.method,
 	} : {};
