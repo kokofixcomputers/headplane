@@ -75,10 +75,6 @@ export default {
 				loading: 'loader 0.8s infinite ease-in-out',
 			},
 		},
-		borderColor: ({ theme }) => ({
-			...theme('colors'),
-			DEFAULT: theme('colors.gray.200', 'currentColor'), //If you don't specify, you need to add a default
-		}),
 	},
 	plugins: [animate, aria],
 } satisfies Config;

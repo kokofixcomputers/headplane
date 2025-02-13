@@ -5,7 +5,7 @@ import cn from '~/utils/cn';
 
 interface Props extends React.HTMLProps<HTMLDivElement> {
 	variant?: 'raised' | 'flat';
-	border?: 'danger' | 'info' | 'success' | 'warning' | 'default';
+	border?: string;
 }
 
 function Card({ variant = 'raised', border = 'default', ...props }: Props) {
@@ -19,7 +19,7 @@ function Card({ variant = 'raised', border = 'default', ...props }: Props) {
 					: 'bg-headplane-50/50 dark:bg-headplane-950/50 shadow-sm',
 				border === 'default' 
 					? 'border border-headplane-100 dark:border-headplane-800'
-					: `border border-other-${border}`,
+					: `border ${border}`,
 				props.className,
 			)}
 		>
