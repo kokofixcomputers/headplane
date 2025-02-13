@@ -106,6 +106,7 @@ export default function Modal({ server_url, listen_address, metrics_listen_addre
 							<div style={{ marginBottom: '10px' }}></div>
 							<Input
 								label="Metrics Listening Address"
+                                value={metrics_listen_address}
 								placeholder="Address to listen to /metrics, you may want to keep this endpoint private to your internal network."
 								onChange={setNewMetrics_listen_address}
 							/>
