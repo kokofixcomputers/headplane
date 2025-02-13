@@ -67,7 +67,7 @@ export default function Modal({ server_url, listen_address, metrics_listen_addre
 							)}
 							Change Address Settings
 						</Dialog.Button>
-						<Dialog.Panel
+						<Dialog.Panel variant='destructive'
 							onSubmit={() => {
 								fetcher.submit(
 									{

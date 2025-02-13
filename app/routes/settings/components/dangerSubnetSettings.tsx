@@ -55,7 +55,7 @@ export default function Modal({ ipv4, ipv6, disabled }: Properties) {
 							)}
 							Change Address Settings
 						</Dialog.Button>
-						<Dialog.Panel
+						<Dialog.Panel variant='destructive'
 							onSubmit={() => {
 								fetcher.submit(
 									{
