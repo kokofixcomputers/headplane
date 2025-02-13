@@ -30,6 +30,7 @@ export default [
 				route('/oidc', 'routes/settings/oidc.tsx'),
 				route('/pkce', 'routes/settings/pkce.tsx'),
 				route('/danger', 'routes/settings/danger.tsx'),
+				route('/other', 'routes/settings/other.tsx'),
 				// route('/local-agent', 'routes/settings/local-agent.tsx'),
 			]),
 		]),
