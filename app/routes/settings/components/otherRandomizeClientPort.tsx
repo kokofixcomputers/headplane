@@ -17,7 +17,7 @@ export default function Modal({ randomize, disabled }: Properties) {
 	const fetcher = useFetcher();
 
 	return (
-			<Card variant="flat" className="max-w-prose mt-12" border="border-other-danger" darkModeBorder='dark:border-other-danger'>
+			<Card variant="flat" className="max-w-prose mt-12">
 				<div className="flex items-center justify-between">
 					<Card.Title className="text-xl mb-0">Randomize Client Port</Card.Title>
 				</div>
