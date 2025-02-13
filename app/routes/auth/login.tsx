@@ -26,11 +26,6 @@ export async function loader({ request }: LoaderFunctionArgs) {
 
 	const context = await loadContext();
 
-	// Only set if OIDC is properly enabled anyways
-	if (context.oidc?.disableKeyLogin) {
-		return redirect('/oidc/start');
-	}
-
 	return {
 		oidc: context.oidc?.issuer,
 		apiKey: !context.oidc?.disableKeyLogin,
