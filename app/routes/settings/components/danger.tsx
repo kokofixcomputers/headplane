@@ -30,7 +30,7 @@ export default function Modal({ server_url, listen_address, metrics_listen_addre
 				</div>
 				<Card.Text className="mt-4">
 					Configure Address & Listening Settings for HeadScale.
-                    <p className="text-yellow-500">If changed improperly, Clients may not be able to connect and this admin dashboard may not work.</p>
+                    <p className="text-yellow-600 dark:text-yellow-500">If changed improperly, Clients may not be able to connect and this admin dashboard may not work.</p>
 					<div style={{ marginBottom: '10px' }}></div>
 					<Input
 						isReadOnly
