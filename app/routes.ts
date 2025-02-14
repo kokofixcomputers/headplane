@@ -31,6 +31,7 @@ export default [
 				route('/pkce', 'routes/settings/pkce.tsx'),
 				route('/danger', 'routes/settings/danger.tsx'),
 				route('/other', 'routes/settings/other.tsx'),
+				route('/derp', 'routes/settings/derp.tsx')
 				// route('/local-agent', 'routes/settings/local-agent.tsx'),
 			]),
 		]),

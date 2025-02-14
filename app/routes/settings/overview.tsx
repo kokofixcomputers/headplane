@@ -73,6 +73,22 @@ export default function Page() {
 
 			<Card variant="flat" className="max-w-prose mt-12">
 				<div className="flex items-center justify-between">
+					<Card.Title className="text-xl mb-0">DERP Settings</Card.Title>
+				</div>
+				<Card.Text className="mt-4">
+					Configure DERP Settings for when a direct connection cannot be established.
+					
+					<RemixLink to="/settings/derp">
+						<div className="text-lg font-medium flex items-center">
+							Manage DERP Settings
+							<ArrowRightIcon className="w-5 h-5 ml-2" />
+						</div>
+					</RemixLink>
+				</Card.Text>
+			</Card>
+
+			<Card variant="flat" className="max-w-prose mt-12">
+				<div className="flex items-center justify-between">
 					<Card.Title className="text-xl mb-0">Other Settings</Card.Title>
 				</div>
 				<Card.Text className="mt-4">
