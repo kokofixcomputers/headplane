@@ -124,20 +124,21 @@ export default function Modal({ issuer, client_id, client_secret, disabled, only
 							<div style={{ marginBottom: '10px' }}></div>
 							<Input
 								label="Issuer"
-								value={issuer}
+								defaultValue={issuer}
 								placeholder="Your Issuer"
 								onChange={setNewIssuer}
 							/>
 							<div style={{ marginBottom: '10px' }}></div>
 							<Input
 								label="Client ID"
-								value={client_id}
+								defaultValue={client_id}
 								placeholder="Your client ID"
 								onChange={setNewClient_id}
 							/>
 							<div style={{ marginBottom: '10px' }}></div>
 							<Input
-								label="Client Secret" // Value won't be added for privacy reasons
+								label="Client Secret"
+								defaultValue={client_secret}
 								placeholder="Your client secret"
 								onChange={setNewClient_secret}
 							/>
