@@ -3,6 +3,7 @@ import { del, post } from '~/utils/headscale';
 import log from '~/utils/log';
 import { send } from '~/utils/res';
 import { getSession } from '~/utils/sessions.server';
+import dbPromise from '../../db/database';
 
 export async function menuAction(request: ActionFunctionArgs['request']) {
 	const session = await getSession(request.headers.get('Cookie'));
@@ -144,6 +145,27 @@ export async function menuAction(request: ActionFunctionArgs['request']) {
 					},
 				);
 			}
+		}
+
+		case 'ipchange': {
+			if (!data.has('ip')) {
+				return send(
+					{ message: 'No IP Address provided' },
+					{
+						status: 400,
+					},
+				);
+			}
+
+			const ip = String(data.get('ip'));
+
+			const db = await dbPromise;
+    		await db.run(
+				`UPDATE nodes SET ipv4 = ? WHERE ipv4 = ?`,
+				[ip, data.get('previousip')?.toString()],
+			);
+			return { message: 'IP Changed!' };
+	
 		}
 
 		case 'register': {

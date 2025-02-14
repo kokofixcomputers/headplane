@@ -8,6 +8,7 @@ import Expire from '../dialogs/expire';
 import Move from '../dialogs/move';
 import Rename from '../dialogs/rename';
 import Routes from '../dialogs/routes';
+import IpChange from '../dialogs/ipchange';
 import Tags from '../dialogs/tags';
 
 interface MenuProps {
@@ -18,7 +19,7 @@ interface MenuProps {
 	isFullButton?: boolean;
 }
 
-type Modal = 'rename' | 'expire' | 'remove' | 'routes' | 'move' | 'tags' | null;
+type Modal = 'rename' | 'expire' | 'remove' | 'routes' | 'move' | 'tags' | 'ipchange' | null;
 
 export default function MachineMenu({
 	machine,
@@ -96,6 +97,16 @@ export default function MachineMenu({
 				/>
 			)}
 
+			{modal === 'ipchange' && (
+				<IpChange
+					machine={machine}
+					isOpen={modal === 'ipchange'}
+					setIsOpen={(isOpen) => {
+						if (!isOpen) setModal(null);
+					}}
+				/>
+			)}
+
 			<Menu>
 				{isFullButton ? (
 					<Menu.Button className="flex items-center gap-x-2">
@@ -120,6 +131,7 @@ export default function MachineMenu({
 						<Menu.Item key="routes">Edit route settings</Menu.Item>
 						<Menu.Item key="tags">Edit ACL tags</Menu.Item>
 						<Menu.Item key="move">Change owner</Menu.Item>
+						<Menu.Item key="ipchange">Change IP</Menu.Item>
 					</Menu.Section>
 					<Menu.Section>
 						{expired ? (
