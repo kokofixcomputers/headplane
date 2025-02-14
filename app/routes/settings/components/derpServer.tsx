@@ -35,7 +35,7 @@ export default function Modal({ enabled, region_id, region_code, region_name, st
 	const fetcher = useFetcher();
 
 	return (
-			<Card variant="flat" className="max-w-prose mt-12" border="border-variant-danger" darkModeBorder='dark:border-variant-danger'>
+			<Card variant="flat" className="max-w-prose mt-12" border="border-variant-warning" darkModeBorder='dark:border-variant-warning'>
 				<div className="flex items-center justify-between">
 					<Card.Title className="text-xl mb-0">DERP Server Settings</Card.Title>
 				</div>
