@@ -6,7 +6,7 @@ import AgentSection from './components/agent';
 
 export default function Page() {
 	return (
-		<div className="flex flex-col gap-8 max-w-screen-lg">
+		<div className="flex flex-col gap-4 max-w-screen-lg">
 			<div className="flex flex-col w-2/3">
 				<h1 className="text-2xl font-medium mb-4">Settings</h1>
 				<p>
