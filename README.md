@@ -38,6 +38,14 @@ For basic deployments, see the [Basic Deployment](/docs/Basic-Integration.md) gu
 It does not include automatic management of ACLs, DNS settings, or the Headscale configuration,
 instead requiring manual editing and reloading when making changes.
 
+## Updating
+For updating headplane, The way is to run these:
+```bash
+curl -L https://github.com/kokofixcomputers/headplane/releases/latest/download/release.zip -o release.zip && unzip -o release.zip
+pnpm run build
+```
+Then restart headplane. All Done!
+
 ## Contributing
 If you would like to contribute, please install a relatively modern version of Node.js and PNPM.
 Clone this repository, run `pnpm install`, and then run `pnpm dev` to start the development server.
