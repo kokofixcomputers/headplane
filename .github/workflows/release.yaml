@@ -19,7 +19,7 @@ jobs:
 
       - name: Update vite.config.ts
         run: |
-          sed -i "29s|JSON.stringify(version)|'${{ github.event.inputs.version }}'|" vite.config.ts
+          sed -i "29s|JSON.stringify(version)|JSON.stringify('${{ github.event.inputs.version }}')|" vite.config.ts
 
       - name: Upload Updated Config
         uses: actions/upload-artifact@v4
