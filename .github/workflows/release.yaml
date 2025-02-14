@@ -36,6 +36,11 @@ jobs:
         with:
           fetch-depth: 0 # Ensure all history is fetched
 
+      - name: Download Updated Config
+        uses: actions/download-artifact@v4
+        with:
+          name: updated-config
+
       - name: Zip Folder
         run: |
           zip -r release.zip . -x ".git/*" ".github/*"
@@ -50,15 +55,15 @@ jobs:
     runs-on: ubuntu-latest
     needs: update-config
     steps:
-      - name: Download Updated Config
-        uses: actions/download-artifact@v4
-        with:
-          name: updated-config
-
       - name: Checkout code
         uses: actions/checkout@v3
         with:
           fetch-depth: 0 # Ensure all history is fetched
+
+      - name: Download Updated Config
+        uses: actions/download-artifact@v4
+        with:
+          name: updated-config
 
       - name: Install Dependencies
         run: |
