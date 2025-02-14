@@ -21,7 +21,7 @@ export default function Modal({ server_url, listen_address, metrics_listen_addre
 	const fetcher = useFetcher();
 
 	return (
-			<Card variant="flat" className="max-w-prose mt-12" border="border-other-danger" darkModeBorder='dark:border-other-danger'>
+			<Card variant="flat" className="max-w-prose mt-12" border="border-variant-danger" darkModeBorder='dark:border-variant-danger'>
 				<div className="flex items-center justify-between">
 					<Card.Title className="text-xl mb-0">Address Settings</Card.Title>
 				</div>
