@@ -1,4 +1,4 @@
-name: Zip repository and create release
+name: Create Release
 
 on:
   workflow_dispatch:
@@ -9,9 +9,27 @@ on:
         type: string
 
 jobs:
-  zip-n-release:
-    name: Zip and Create Release
+  update-config:
     runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0 # Ensure all history is fetched
+
+      - name: Update vite.config.ts
+        run: |
+          sed -i "29s|JSON.stringify(version)|'${{ github.event.inputs.version }}'|" vite.config.ts
+
+      - name: Upload Updated Config
+        uses: actions/upload-artifact@v3
+        with:
+          name: updated-config
+          path: vite.config.ts
+
+  zip-repo:
+    runs-on: ubuntu-latest
+    needs: update-config
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
@@ -22,10 +40,65 @@ jobs:
         run: |
           zip -r release.zip . -x ".git/*" ".github/*"
 
+      - name: Upload Zip Artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: release-zip
+          path: release.zip
+
+  build-repo:
+    runs-on: ubuntu-latest
+    needs: update-config
+    steps:
+      - name: Download Updated Config
+        uses: actions/download-artifact@v3
+        with:
+          name: updated-config
+
+      - name: Checkout code
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0 # Ensure all history is fetched
+
+      - name: Install Dependencies
+        run: |
+          npm install -g pnpm
+          pnpm install
+
+      - name: Build Project
+        run: |
+          pnpm run build
+
+      - name: Zip Build Artifact
+        run: |
+          zip -r build.zip build/*
+
+      - name: Upload Build Artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: build-zip
+          path: build.zip
+
+  create-release:
+    runs-on: ubuntu-latest
+    needs: [zip-repo, build-repo]
+    steps:
+      - name: Download Zip Artifact
+        uses: actions/download-artifact@v3
+        with:
+          name: release-zip
+
+      - name: Download Build Artifact
+        uses: actions/download-artifact@v3
+        with:
+          name: build-zip
+
       - name: Create Release
         uses: ncipollo/release-action@v1.12.0
         with:
-          artifacts: "release.zip"
+          artifacts: |
+            ./release.zip
+            ./build.zip
           tag: ${{ github.event.inputs.version }}
           token: ${{ secrets.GITHUB_TOKEN }}
           generateReleaseNotes: true
