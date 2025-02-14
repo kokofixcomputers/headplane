@@ -71,7 +71,7 @@ export default function Page() {
 				</Card.Text>
 			</Card>
 
-			<Card variant="flat" className="max-w-prose mt-12">
+			<Card variant="flat" className="max-w-prose mt-12" border="border-variant-warning" darkModeBorder='dark:border-variant-warning'>
 				<div className="flex items-center justify-between">
 					<Card.Title className="text-xl mb-0">DERP Settings</Card.Title>
 				</div>
