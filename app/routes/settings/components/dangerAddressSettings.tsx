@@ -89,21 +89,21 @@ export default function Modal({ server_url, listen_address, metrics_listen_addre
 							<div style={{ marginBottom: '10px' }}></div>
 							<Input
 								label="Server URL"
-								value={server_url}
+								defaultValue={server_url}
 								placeholder="The url clients will connect to."
 								onChange={setNewServerURL}
 							/>
 							<div style={{ marginBottom: '10px' }}></div>
 							<Input
 								label="Listening Address"
-								value={listen_address}
+								defaultValue={listen_address}
 								placeholder="Address to listen to / bind to on the server."
 								onChange={setNewListeningAddress}
 							/>
 							<div style={{ marginBottom: '10px' }}></div>
 							<Input
 								label="Metrics Listening Address"
-                                value={metrics_listen_address}
+                                defaultValue={metrics_listen_address}
 								placeholder="Address to listen to /metrics, you may want to keep this endpoint private to your internal network."
 								onChange={setNewMetrics_listen_address}
 							/>

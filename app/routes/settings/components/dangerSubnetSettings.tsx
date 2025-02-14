@@ -76,14 +76,14 @@ export default function Modal({ ipv4, ipv6, disabled }: Properties) {
 							<div style={{ marginBottom: '10px' }}></div>
 							<Input
 								label="IPV4 Subnet"
-								value={ipv4}
+								defaultValue={ipv4}
 								placeholder="The url clients will connect to."
 								onChange={setNewipv4}
 							/>
 							<div style={{ marginBottom: '10px' }}></div>
 							<Input
 								label="IPV6 Subnet"
-								value={ipv6}
+								defaultValue={ipv6}
 								placeholder="Address to listen to / bind to on the server."
 								onChange={setNewipv6}
 							/>
