@@ -140,7 +140,7 @@ export default function Modal({ enabled, region_id, region_code, region_name, st
 							)}
 							Change Address Settings
 						</Dialog.Button>
-						<Dialog.Panel variant='destructive'
+						<Dialog.Panel variant='warning'
 							onSubmit={() => {
 								fetcher.submit(
 									{

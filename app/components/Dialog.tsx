@@ -67,7 +67,7 @@ function Dialog(props: DialogProps) {
 
 export interface DialogPanelProps extends AriaDialogProps {
 	children: React.ReactNode;
-	variant?: 'normal' | 'destructive' | 'unactionable';
+	variant?: 'normal' | 'destructive' | 'warning' | 'unactionable';
 	onSubmit?: React.FormEventHandler<HTMLFormElement>;
 	method?: HTMLFormMethod;
 	isDisabled?: boolean;
@@ -121,7 +121,7 @@ function Panel(props: DialogPanelProps) {
 							<Button onPress={close}>Cancel</Button>
 							<Button
 								type="submit"
-								variant={variant === 'destructive' ? 'danger' : 'heavy'}
+								variant={variant === 'destructive' ? 'danger' : variant === 'warning' ? 'warning' : 'heavy'}
 								isDisabled={
 									isDisabled || !(ref.current?.checkValidity() ?? true)
 								}
