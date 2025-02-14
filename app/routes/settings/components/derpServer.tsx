@@ -145,7 +145,7 @@ export default function Modal({ enabled, region_id, region_code, region_name, st
 								fetcher.submit(
 									{
 										'derp.server.enabled': newEnabled,
-										'derp.server.region_id': newRegion_id.toString(),
+										'derp.server.region_id': Number(newRegion_id),
                                         'derp.server.region_code': newRegion_code,
                                         'derp.server.region_name': newRegion_name,
                                         'derp.server.stun_listen_addr': newStun_listen_addr,
