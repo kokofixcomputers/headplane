@@ -13,7 +13,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
         with:
           fetch-depth: 0 # Ensure all history is fetched
 
@@ -22,7 +22,7 @@ jobs:
           sed -i "29s|JSON.stringify(version)|'${{ github.event.inputs.version }}'|" vite.config.ts
 
       - name: Upload Updated Config
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: updated-config
           path: vite.config.ts
@@ -32,7 +32,7 @@ jobs:
     needs: update-config
     steps:
       - name: Checkout code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
         with:
           fetch-depth: 0 # Ensure all history is fetched
 
@@ -41,7 +41,7 @@ jobs:
           zip -r release.zip . -x ".git/*" ".github/*"
 
       - name: Upload Zip Artifact
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: release-zip
           path: release.zip
@@ -51,12 +51,12 @@ jobs:
     needs: update-config
     steps:
       - name: Download Updated Config
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4
         with:
           name: updated-config
 
       - name: Checkout code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
         with:
           fetch-depth: 0 # Ensure all history is fetched
 
@@ -74,7 +74,7 @@ jobs:
           zip -r build.zip build/*
 
       - name: Upload Build Artifact
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: build-zip
           path: build.zip
@@ -84,12 +84,12 @@ jobs:
     needs: [zip-repo, build-repo]
     steps:
       - name: Download Zip Artifact
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4
         with:
           name: release-zip
 
       - name: Download Build Artifact
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4
         with:
           name: build-zip
 
