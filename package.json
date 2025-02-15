@@ -78,8 +78,8 @@
 		"pnpm": ">=10 <11"
 	},
 	"pnpm": {
-		"patchedDependencies": {
-			"@shopify/lang-jsonc@1.0.0": "patches/@shopify__lang-jsonc@1.0.0.patch"
-		}
+		"onlyBuiltDependencies": [
+			"sqlite3"
+		]
 	}
 }
