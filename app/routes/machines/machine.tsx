@@ -18,6 +18,7 @@ import { getSession } from '~/utils/sessions.server';
 import { menuAction } from './action';
 import MenuOptions from './components/menu';
 import Routes from './dialogs/routes';
+import * as hinfo from '~/utils/host-info';
 
 export async function loader({ request, params }: LoaderFunctionArgs) {
 	const session = await getSession(request.headers.get('Cookie'));
@@ -152,7 +153,7 @@ export default function Page() {
 				</div>
 				<div className="p-2 pl-4">
 					<p className="text-sm text-headplane-600 dark:text-headplane-300">
-						Status
+						Tags
 					</p>
 					<div className="flex gap-1 mt-1 mb-8">
 						{tags.map((tag) => (
@@ -289,9 +290,10 @@ export default function Page() {
 			<h2 className="text-xl font-medium mb-4">Machine Details</h2>
 			<Card variant="flat" className="w-full max-w-full">
 				<Attribute name="Creator" value={machine.user.name} />
+				<Attribute name="Created At" value={machine.createdAt} />
 				<Attribute name="Node ID" value={machine.id} />
-				<Attribute name="Node Name" value={machine.givenName} />
-				<Attribute name="Hostname" value={machine.name} />
+				<Attribute name="Node Name" value={machine.name} />
+				<Attribute name="Hostname" value={machine.givenName} />
 				<Attribute isCopyable name="Node Key" value={machine.nodeKey} />
 				<Attribute
 					name="Created"

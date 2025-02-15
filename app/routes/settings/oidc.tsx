@@ -22,6 +22,7 @@ export async function loader() {
 		client_id: config.oidc.client_id,
 		client_secret: config.oidc.client_secret,
 		allowed_domains: config.oidc.allowed_domains,
+		scopes: config.oidc.scope,
 	} : {};
 
 
@@ -68,7 +69,7 @@ export default function Page() {
                             the configuration
                         </Notice>
                     )}
-					<OdicModal allowed_domains={data.allowed_domains ?? []} issuer={data.issuer ?? ''} client_id={data.client_id ?? ''} client_secret={data.client_secret ?? ''} only_start_if_oidc_is_available={data.only_start_if_oidc_is_available ?? true} disabled={!data.config.write}></OdicModal>
+					<OdicModal scopes={data.scopes} allowed_domains={data.allowed_domains ?? []} issuer={data.issuer ?? ''} client_id={data.client_id ?? ''} client_secret={data.client_secret ?? ''} only_start_if_oidc_is_available={data.only_start_if_oidc_is_available ?? true} disabled={!data.config.write}></OdicModal>
             </div>
 		</>
 	);

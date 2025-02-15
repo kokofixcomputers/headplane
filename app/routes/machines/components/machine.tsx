@@ -85,7 +85,7 @@ export default function MachineRow({
 
 	const ipOptions = useMemo(() => {
 		if (magic) {
-			return [...machine.ipAddresses, `${machine.givenName}.${prefix}`];
+			return [...machine.ipAddresses, `${machine.givenName}.${prefix}`, machine.givenName];
 		}
 
 		return machine.ipAddresses;
@@ -139,8 +139,12 @@ export default function MachineRow({
 						</Menu.IconButton>
 						<Menu.Panel
 							onAction={async (key) => {
-								await navigator.clipboard.writeText(key.toString());
-								toast('Copied IP address to clipboard');
+								try {
+									await navigator.clipboard.writeText(key.toString());
+									toast('Copied IP address to clipboard');
+								} catch (err) {
+									toast('Failed to copy IP address - clipboard access may be restricted. Make sure your on a secure site.');
+								}
 							}}
 						>
 							<Menu.Section>

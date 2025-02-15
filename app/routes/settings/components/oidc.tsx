@@ -5,6 +5,7 @@ import Dialog from '~/components/Dialog';
 import Input from '~/components/Input';
 import Spinner from '~/components/Spinner';
 import OidcDomainModal from '../components/oidcAllowedDomains';
+import OidcScopesModal from '../components/oidcScopes';
 import Card from '~/components/Card';
 
 type Properties = {
@@ -14,11 +15,12 @@ type Properties = {
     readonly client_secret: string;
 	readonly only_start_if_oidc_is_available: boolean;
 	readonly allowed_domains: string[];
+	readonly scopes: string[];
 };
 
 
 // TODO: Switch to form submit instead of JSON patch
-export default function Modal({ issuer, client_id, client_secret, disabled, only_start_if_oidc_is_available, allowed_domains }: Properties) {
+export default function Modal({ scopes, issuer, client_id, client_secret, disabled, only_start_if_oidc_is_available, allowed_domains }: Properties) {
 	const [newIssuer, setNewIssuer] = useState(issuer);
     const [newClient_id, setNewClient_id] = useState(client_id);
     const [newClient_secret, setNewClient_secret] = useState(client_secret);
@@ -147,6 +149,7 @@ export default function Modal({ issuer, client_id, client_secret, disabled, only
 					</Dialog>
 				</Card.Text>
 			</Card>
+			<OidcScopesModal Inputscopes={scopes} disabled={disabled} />
 			<OidcDomainModal allowed_domains={allowed_domains ?? []} disabled={disabled} />
 		</div>	
 	);
