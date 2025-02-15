@@ -273,7 +273,6 @@ function MachineChip({ machine }: { readonly machine: Machine }) {
 	const { attributes, listeners, setNodeRef, transform } = useDraggable({
 		id: machine.id,
 		data: machine,
-		disabled: machine.user?.provider === 'oidc', // Disable dragging if provider is oidc
 	});
 
 	return (
@@ -287,7 +286,6 @@ function MachineChip({ machine }: { readonly machine: Machine }) {
 				transform: transform
 					? `translate3d(${transform.x.toString()}px, ${transform.y.toString()}px, 0)`
 					: undefined,
-				cursor: machine.user?.provider === 'oidc' ? 'not-allowed' : 'grab', // Change cursor for visual feedback
 			}}
 			{...listeners}
 			{...attributes}
@@ -301,7 +299,6 @@ function MachineChip({ machine }: { readonly machine: Machine }) {
 		</div>
 	);
 }
-
 
 interface CardProps {
 	user: UserMachine;
