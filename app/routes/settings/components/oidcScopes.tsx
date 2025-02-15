@@ -72,7 +72,7 @@ export default function Modal({ disabled, Inputscopes }: Properties) {
                                     </TableList.Item>
                                 ) : (
                                     scopes.map((scope, index) => (
-                                        <TableList.Item key={`${scope}`}>
+                                        <><TableList.Item key={`${scope}`}>
                                             <div className="flex gap-24 items-center">
                                                 <div className="flex gap-4 items-center">
                                                     <p className="font-mono text-sm">{scope}</p>
@@ -81,56 +81,53 @@ export default function Modal({ disabled, Inputscopes }: Properties) {
                                             <Button
                                                 className={cn(
                                                     'px-2 py-1 rounded-md',
-                                                    'text-red-500 dark:text-red-400',
+                                                    'text-red-500 dark:text-red-400'
                                                 )}
                                                 isDisabled={disabled}
                                                 onPress={() => {
                                                     fetcher.submit(
                                                         {
                                                             'oidc.scope': [...new Set([...scopes])].filter(
-                                                                (_, i) => i !== index,
+                                                                (_, i) => i !== index
                                                             ),
-                                                        },                                                        {
-                                                            method: 'PATCH',
-                                                            encType: 'application/json',
-                                                        },
+                                                        }, {
+                                                        method: 'PATCH',
+                                                        encType: 'application/json',
+                                                    }
                                                     );
-                                                }}
+                                                } }
                                             >
                                                 Remove
                                             </Button>
-                                        </TableList.Item>
+                                        </TableList.Item><TableList.Item
+                                            className={cn(
+                                                'rounded-b-xl focus-within:ring'
+                                            )}
+                                        >
+                                                <Input
+                                                    labelHidden
+                                                    label="Add a scope"
+                                                    placeholder="Add a scope"
+                                                    onChange={setScope}
+                                                    className={cn(
+                                                        'border-none font-mono p-0',
+                                                        'rounded-none focus:ring-0 w-full'
+                                                    )} />
+                                                <Button
+                                                    className={cn(
+                                                        'rounded-md p-0.5'
+                                                    )}
+                                                    onPress={() => {
+                                                        setScopes([...scopes, scope]);
+                                                        setScope('');
+                                                    } }
+                                                >
+                                                    <Plus className="p-1" />
+                                                </Button>
+                                            </TableList.Item></>
                                     ))
                                 )}
                             </TableList>
-                            <TableList.Item
-                                className={cn(
-                                    'rounded-b-xl focus-within:ring',
-                                )}
-                            >
-                                <Input
-                                    labelHidden
-                                    label="Add a scope"
-                                    placeholder="email"
-                                    onChange={setScope}
-                                    className={cn(
-                                        'border-none font-mono p-0',
-                                        'rounded-none focus:ring-0 w-full',
-                                    )}
-                                />
-                                <Button
-                                    className={cn(
-                                        'rounded-md p-0.5',
-                                    )}
-                                    onPress={() => {
-                                        setScopes([...scopes, scope]);
-                                        setScope('');
-                                    }}
-                                >
-                                    <Plus className="p-1" />
-                                </Button>
-                            </TableList.Item>
-                            {disabled ? undefined : <AddAllowedDomain records={scopes} />}
                         </div>
                         </Dialog.Panel>
                     </Dialog>
