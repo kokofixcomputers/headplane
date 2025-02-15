@@ -51,7 +51,7 @@ instead requiring manual editing and reloading when making changes.
 ## Updating
 For updating headplane, The way is to run these:
 ```bash
-curl -L https://github.com/kokofixcomputers/headplane/releases/latest/download/release.zip -o release.zip && unzip -o release.zip
+curl -L https://github.com/kokofixcomputers/headplane/releases/latest/download/build.zip -o release.zip && unzip -o release.zip
 pnpm run build
 ```
 Then restart headplane. All Done!
