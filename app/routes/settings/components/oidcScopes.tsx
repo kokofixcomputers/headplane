@@ -99,34 +99,35 @@ export default function Modal({ disabled, Inputscopes }: Properties) {
                                             >
                                                 Remove
                                             </Button>
-                                        </TableList.Item><TableList.Item
-                                            className={cn(
-                                                'rounded-b-xl focus-within:ring'
-                                            )}
-                                        >
-                                                <Input
-                                                    labelHidden
-                                                    label="Add a scope"
-                                                    placeholder="Add a scope"
-                                                    onChange={setScope}
-                                                    className={cn(
-                                                        'border-none font-mono p-0',
-                                                        'rounded-none focus:ring-0 w-full'
-                                                    )} />
-                                                <Button
-                                                    className={cn(
-                                                        'rounded-md p-0.5'
-                                                    )}
-                                                    onPress={() => {
-                                                        setScopes([...scopes, scope]);
-                                                        setScope('');
-                                                    } }
-                                                >
-                                                    <Plus className="p-1" />
-                                                </Button>
-                                            </TableList.Item></>
+                                        </TableList.Item></>
                                     ))
                                 )}
+                                <TableList.Item
+                                    className={cn(
+                                        'rounded-b-xl focus-within:ring'
+                                    )}
+                                >
+                                        <Input
+                                            labelHidden
+                                            label="Add a scope"
+                                            placeholder="Add a scope"
+                                            onChange={setScope}
+                                            className={cn(
+                                                'border-none font-mono p-0',
+                                                'rounded-none focus:ring-0 w-full'
+                                            )} />
+                                        <Button
+                                            className={cn(
+                                                'rounded-md p-0.5'
+                                            )}
+                                            onPress={() => {
+                                                setScopes([...scopes, scope]);
+                                                setScope('');
+                                            } }
+                                        >
+                                            <Plus className="p-1" />
+                                        </Button>
+                                    </TableList.Item>
                             </TableList>
                         </div>
                         </Dialog.Panel>
