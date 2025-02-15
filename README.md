@@ -1,4 +1,4 @@
-# Headplane
+# Headplane-fork
 > An advanced UI for [juanfont/headscale](https://github.com/juanfont/headscale)
 
 <picture>
@@ -20,10 +20,20 @@ Headscale is a self-hosted version of the Tailscale control server, however, it 
 Headplane aims to solve this issue by providing a GUI that can deeply integrate with the Headscale server.
 It's able to replicate nearly all of the functions of the official Tailscale SaaS UI, including:
 
-- Machine/Node expiry, network routing, name, and owner management
+- Machine/Node expiry, network routing, name, owner management, and changing ip (NEW! IP Change is new.)
 - Access Control List (ACL) and tagging configuration
 - Support for OpenID Connect (OIDC) as a login provider
 - DNS and *safe* Headscale configuration management
+
+## Features
+- [x] Authentication via OpenID Connect (OIDC)
+- [x] ACL and Tag management
+- [x] DNS management
+- [x] Headscale configuration management
+- [x] User management
+- [x] Node management
+- [x] Node expiry
+- [x] Change Node IP
 
 ## Deployment
 > For more configuration options, refer to the [Configuration](/docs/Configuration.md) guide.
