@@ -4,11 +4,6 @@ settings:
   autoInstallPeers: true
   excludeLinksFromLockfile: false
 
-patchedDependencies:
-  '@shopify/lang-jsonc@1.0.0':
-    hash: 915164bae9a5d47bb0e7edf0cbbc4c7f0fedb1a2f9a5f6ef5c53d8fef6856211
-    path: patches/@shopify__lang-jsonc@1.0.0.patch
-
 importers:
 
   .:
@@ -54,7 +49,7 @@ importers:
         version: 3.0.0-beta.7(react@19.0.0)
       '@shopify/lang-jsonc':
         specifier: ^1.0.0
-        version: 1.0.0(patch_hash=915164bae9a5d47bb0e7edf0cbbc4c7f0fedb1a2f9a5f6ef5c53d8fef6856211)
+        version: 1.0.0
       '@types/react':
         specifier: ^19.0.2
         version: 19.0.2
@@ -5242,7 +5237,7 @@ snapshots:
   '@rollup/rollup-win32-x64-msvc@4.29.1':
     optional: true
 
-  '@shopify/lang-jsonc@1.0.0(patch_hash=915164bae9a5d47bb0e7edf0cbbc4c7f0fedb1a2f9a5f6ef5c53d8fef6856211)':
+  '@shopify/lang-jsonc@1.0.0':
     dependencies:
       '@lezer/highlight': 1.2.1
       '@lezer/lr': 1.4.2
