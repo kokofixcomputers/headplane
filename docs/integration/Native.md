@@ -42,7 +42,7 @@ of controlling Headscale natively on Linux.
 LOAD_ENV_FILE=true node ./build/headplane/server.js
 ```
 
-> If you'd like, you can turn use pm2 to run this. [Configuration](/docs/pm2.md).
+If you'd like, you can use pm2 to run this. [Configuration](/docs/pm2.md).
 
 ### Cannot find ./build directory?
 Headplane expects the `build` directory to be present when running the server.
