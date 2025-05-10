@@ -21,7 +21,7 @@ as Headplane has issues running correctly when installed and built via NPM or Ya
 
 4. Clone the Headplane repository, install dependencies, and build the project:
 ```sh
-git clone https://github.com/tale/headplane # (or clone via SSH)
+git clone https://github.com/kokofixcomputers/headplane
 cd headplane
 pnpm install
 pnpm build
@@ -42,8 +42,7 @@ of controlling Headscale natively on Linux.
 LOAD_ENV_FILE=true node ./build/headplane/server.js
 ```
 
-> If you'd like, you can turn this into a `systemd` unit to manage the service.
-> I plan to provide packages and unit files to make this easier in the future.
+> If you'd like, you can turn use pm2 to run this. [Configuration](/docs/pm2.md).
 
 ### Cannot find ./build directory?
 Headplane expects the `build` directory to be present when running the server.
